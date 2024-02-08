@@ -13,5 +13,4 @@ Objective:
         - Implement a CSS framework (e.g., Bootstrap or Tailwind CSS) for styling.
 
 My plan:
-
     [- stack choice](https://tailwindcss.com/docs/guides/solidjs)
