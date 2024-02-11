@@ -11,6 +11,3 @@ Objective:
     Optional:
         - Incorporate HTML graphics, such as icons, to represent different task types.
         - Implement a CSS framework (e.g., Bootstrap or Tailwind CSS) for styling.
-
-My plan:
-    [- stack choice](https://tailwindcss.com/docs/guides/solidjs)
