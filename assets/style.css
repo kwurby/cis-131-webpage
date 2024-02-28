@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
-    --main: #1f2421ff;
-    --outline: #383838;
-    --white: #d5cdb2;
+    --main: #fff;
+    --outline: #d5d5d5;
+    --text: #333333;
 
     --accent-1: #49a078ff;
     --accent-1-dark: #216869ff;
@@ -23,7 +23,7 @@ body, html {
     width: 100%;
     height: 100%;
 
-    color: var(--white);
+    color: var(--text);
 
     /* font stuyff */
 
@@ -45,7 +45,7 @@ nav {
 }
 nav svg {
     height: 2rem;
-    fill: var(--white);
+    fill: var(--text);
     transition: 0.2s;
 }
 
@@ -99,10 +99,19 @@ aside {
     padding: 0.5rem;
 }
 
+aside div {
+    filter: drop-shadow(0 0 0rem var(--outline));
+    transition: 0.2s;
+}
+
+aside div:hover {
+    filter: drop-shadow(0 0 0.1rem var(--outline));
+}
+
 aside svg {
     width: 2rem;
     height: 2rem;
-    fill: var(--white);
+    fill: var(--text);
     transition: 0.2s;
     padding: 0.25rem;
     background-color: var(--accent-2);
@@ -123,23 +132,23 @@ aside svg:hover {
 .project {
     padding: 1rem;
     margin: 1rem;
-
     border-radius: 1rem;
-    border: 1px solid var(--outline);
 }
 
-.project .edit_title svg{
-    height: 1rem;
-    fill: var(--white);
-    transition: 0.2s;
+.project .project_title_text {
+    font-size: 1.2rem;
 }
 
-.project .edit_title svg:hover {
-    fill: var(--accent-1);
+.project .show {
+    display: flex;
 }
+
 
 .project .top_workspace .project_title {
     padding-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 .project .top_workspace .project_title span {
@@ -161,21 +170,228 @@ aside svg:hover {
 .project .users svg {
     height: 1.5rem;
 
-    fill: var(--white);
+    fill: var(--text);
 }
 
 .project .users .user_count {
-    background-color: var(--accent-1-dark);
     padding: 0.25rem;
     border-radius: 0.25rem;
+    color: var(--text);
+    text-shadow: -1px 1px 2px white,
+                1px 1px 2px white,
+                1px -1px 0 white,
+                -1px -1px 0 white;
 }
 
-.project .bottom_workspace {
+
+
+.checkbox-round {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+input.no-outline, input.no-outline:focus {
+    border: none;
+    outline: none;
+    width: 80%;
+}
+
+input.no-outline::placeholder {
+    color: var(--outline);
+}
+
+.project .todo_section {
     padding: 1rem;
     margin: 1rem;
 
     border-radius: 1rem;
     border: 1px solid var(--outline);
 }
+
+
+.project .edit_option {
+    width: 6rem;
+}
+.project .edit_option svg {
+    height: 1.5rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.delete_project {
+    fill: var(--text);
+}
+
+.delete_project:hover {
+    fill: red;
+}
+
+.add_task {
+    fill: var(--text);
+    transition: 0.2s;
+}
+
+
+
+/* colors */
+.default {
+    border: 2px solid var(--outline);
+}
+
+.default .color_project {
+    fill: var(--outline);
+}
+
+.default .user_count {
+    background-color: var(--outline);
+}
+
+.default .checkbox-round {
+    border: 2px solid var(--outline);
+}
+
+.default .checkbox-round:checked {
+    background-color: var(--outline);
+}
+.default .add_task:hover {
+    fill: var(--outline);
+}
+
+
+
+.blue {
+    border: 2px solid blue;
+}
+
+.blue .color_project {
+    fill: blue;
+}
+
+.blue .user_count {
+    background-color: blue;
+}
+
+.blue .checkbox-round {
+    border: 2px solid blue;
+}
+
+.blue .checkbox-round:checked {
+    background-color: blue;
+}
+.blue .add_task:hover {
+    fill: blue;
+}
+
+
+
+
+.red {
+    border: 2px solid red;
+}
+.red .color_project {
+    fill: red;
+}
+
+.red .user_count {
+    background-color: red;
+}
+
+.red .checkbox-round {
+    border: 2px solid red;
+}
+
+.red .checkbox-round:checked {
+    background-color: red;
+}
+.red  .add_task:hover {
+    fill: red;
+}
+
+
+
+
+
+.orange {
+    border: 2px solid orange;
+}
+.orange .color_project {
+    fill: orange;
+}
+
+.orange .user_count {
+    background-color: orange;
+}
+
+.orange .checkbox-round {
+    border: 2px solid orange;
+}
+
+.orange .checkbox-round:checked {
+    background-color: orange;
+}
+.orange .add_task:hover {
+    fill: orange;
+}
+
+
+
+
+
+.green {
+    border: 2px solid green;
+}
+.green .color_project {
+    fill: green;
+}
+
+.green .user_count {
+    background-color: green;
+}
+
+.green .checkbox-round {
+    border: 2px solid green;
+}
+
+.green .checkbox-round:checked {
+    background-color: green;
+}
+.green .add_task:hover {
+    fill: green;
+}
+
+
+
+
+
+.purple{
+    border: 2px solid purple;
+}
+.purple .color_project {
+    fill: purple;
+}
+
+.purple .user_count {
+    background-color: purple;
+}
+
+.purple .checkbox-round {
+    border: 2px solid purple;
+}
+
+.purple .checkbox-round:checked {
+    background-color: purple;
+}
+.purple .add_task:hover {
+    fill: purple;
+}
+
+
 
 
