@@ -84,6 +84,7 @@ form > * {
 
     font-weight: bolder;
     color: rgba(63, 63, 63, 0.56);
+    transition: 0.2s;
 }
 
 #form_type button.selected {
@@ -109,18 +110,10 @@ form > * {
     padding-bottom: 0.2rem;
 }
 
-#login input[type=text] {
-    margin-bottom: 1rem;
-}
-
-#login input[type=password] {
-    margin-bottom: 2rem;
-}
-
 #login input[type=text], #login input[type=password]{
     padding: 0.7rem;
     width: 100%;
-
+    margin-bottom: 1rem;
     background-color: rgba(63, 63, 63, 0.56);
     outline: none;
     border: 1px solid transparent;
@@ -134,7 +127,7 @@ form > * {
     border: 1px solid var(--outline);
 }
 
-#login input[type=submit] {
+#login a {
     outline: none;
     border: none;
 
@@ -148,9 +141,12 @@ form > * {
     filter: drop-shadow(0 0 2px rgba(63, 63, 63, 0.24)) brightness(1);
     transition: 0.2s;
     cursor: pointer;
+    text-align: center;
+    margin-top: 2rem;
+    text-decoration: none;
 }
 
-#login input[type=submit]:hover {
+#login a:hover {
     filter: drop-shadow(0 0 2px rgba(63, 63, 63, 0.24)) brightness(0.85);
 }
 

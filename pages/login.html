@@ -17,16 +17,19 @@
     </nav>
     <main>
         <div id="form_type">
-            <button class="selected">LOG IN</button>
-            <button>SIGN UP</button>
+            <button id="login_tab" class="selected">LOG IN</button>
+            <button id="signup_tab">SIGN UP</button>
         </div>
         <form id="login" action="">
             <label for="username">Username</label>
             <input type="text" name="" id="username">
             <label for="pass">Password</label>
             <input type="password" name="" id="pass">
-            <input type="submit" value="Login">
+            <label style="display: none" for="passVerify" id="passVerifyL">Verify Password</label>
+            <input style="display: none" type="password" name="" id="passVerify">
+            <a href="../index.html" id="action_button" type="submit">Login</a>
         </form>
     </main>
+    <script src="../js/login.js"></script>
 </body>
 </html>
