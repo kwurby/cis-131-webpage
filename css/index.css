@@ -96,6 +96,38 @@ nav #user svg {
     fill: var(--text);
     height: 2rem;
 }
+/*=======================================*/
+/*                modal                  */
+/*=======================================*/
+
+#modal div {
+    position: fixed;
+    width: 95%;
+    max-width: 300px;
+    height: 90%;
+    max-height: 200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    border-radius: 6px;
+    border: 2px solid black;
+    background: var(--main);
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#modal div.delete {
+    display: none;
+}
+
+#modal div.overdue {
+    display: flex;
+}
+
+
 
 /*=======================================*/
 /*          Workspace section            */
@@ -111,7 +143,14 @@ nav #user svg {
     padding: 1rem;
     margin: 1rem;
     border-radius: 6px;
+    cursor: move;
+    background: var(--main);
 }
+
+.project.over {
+    border: 3px dotted #666;
+}
+
 
 .project .heading {
     display: flex;
