@@ -100,34 +100,58 @@ nav #user svg {
 /*                modal                  */
 /*=======================================*/
 
-#modal div {
+#modals {
+    z-index: 6;
+}
+
+#modals div {
     position: fixed;
     width: 95%;
     max-width: 300px;
-    height: 90%;
-    max-height: 200px;
+    height: fit-content;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     overflow: auto;
     border-radius: 6px;
-    border: 2px solid black;
+    border: 2px solid var(--text);
     background: var(--main);
+
+    padding: 12px;
+
+    display: none;
 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-#modal div.delete {
-    display: none;
+#modals div h2 {
+    font-size: 1.2rem;
 }
 
-#modal div.overdue {
-    display: flex;
+#modals div button {
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    padding-block: 0.5rem;
+    margin-top: 0.5rem;
+    width: 100%;
+    border: 2px solid var(--accent);
+    border-radius: 3px;
+    font-weight: bolder;
+    color: var(--accent);
+    transition: 0.2s;
 }
 
+#modals div button.delete {
+    background: var(--accent);
+    color: var(--main);
+}
 
+#modals div button:hover {
+    filter: brightness(0.9);
+}
 
 /*=======================================*/
 /*          Workspace section            */
@@ -182,6 +206,7 @@ nav #user svg {
 
     border-radius: 3px;
     border: 1px solid var(--outline);
+    z-index: 3;
 }
 
 .project .todo_section .todo_template > * {

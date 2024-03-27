@@ -36,12 +36,12 @@ document.getElementById("add_work_space").onclick = function () {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.body.addEventListener('click', function(event) {
+    overdue_modal_check();
+    document.body.addEventListener('click', async function (event) {
         if (event.target.closest('.delete_project')) {
-            let projectElement = event.target.closest('.project');
-            if (projectElement) {
-                projectElement.remove();
-            }
+            let element = document.getElementById('modal_delete');
+            element.style.display = "flex";
+            LAST_CHECKED_PROJECT = event.target.closest('.project');
         }
         let colorList;
         if (event.target.closest('.color_project')) {
@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
             projectElement.querySelector(".todo_section").appendChild(new_section);
         }
         if (event.target.closest('.delete_task')) {
+
             let taskElement = event.target.closest('.todo_template');
             if (taskElement) {
                 taskElement.remove();
@@ -87,26 +88,83 @@ function cycleClass(element, classNames) {
     const nextClassIndex = (currentClassIndex + 1) % classNames.length;
     element.classList.add(classNames[nextClassIndex]);
 }
+// ?modal stuff
 
-// Drag and drop stuff
+function overdue_modal_check() {
+    OUT_OF_DATE = [];
+
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+    const today_value = (year*10000) + (month * 100) + (day);
+
+    document.querySelectorAll('.task_date').forEach( el => {
+        let date_items = el.value.split('-');
+        let task_value = (date_items[0]*10000) + (date_items[1] * 100) + (date_items[2]*1);
+        if (task_value < today_value) {
+            OUT_OF_DATE.push(el);
+        }
+        console.log("today: " + today_value + "| task: " + task_value);
+    });
+
+    if (OUT_OF_DATE.length < 1) return;
+
+    let element = document.getElementById('modal_overdue');
+    element.style.display = "flex";
+}
+
+function delete_task_check(){
+    OUT_OF_DATE.forEach( el => {
+        el.closest('.todo_template').remove();
+    });
+    let element = document.getElementById('modal_overdue');
+    element.style.display = "none";
+}
+
+function delete_task_hide() {
+    let element = document.getElementById('modal_overdue');
+    element.style.display = "none";
+}
+
+function delete_modal_check(){
+    let projectElement = LAST_CHECKED_PROJECT;
+    if (projectElement) {
+        projectElement.remove();
+    }
+    let element = document.getElementById('modal_delete');
+    element.style.display = "none";
+}
+
+function delete_modal_hide() {
+    let element = document.getElementById('modal_delete');
+    element.style.display = "none";
+}
 
 
-function handleDragEnd(e) {
+
+
+// ?Drag and drop stuff
+
+
+function handleDragEnd() {
     let items = document.querySelectorAll('#workspace .project');
     items.forEach(function (item) {
         item.classList.remove('over');
     });
 }
 
-function handleDragEnter(e) {
+function handleDragEnter() {
     this.classList.add('over');
 }
 
-function handleDragLeave(e) {
+function handleDragLeave() {
     this.classList.remove('over');
 }
 
-function handleDragOver(e) {
+function handleDragOver() {
     e.preventDefault();
     return false;
 }
@@ -148,14 +206,8 @@ function save_input_data(element) {
 
 function save_input_check(element) {
     element.setAttribute("checked", element.checked);
-    console.log(element.checked)
 }
 
 function save_input_note(element){
     element.innerHTML = element.value;
-    console.log(element.value)
-}
-
-function delete_modal_check(){
-
 }
