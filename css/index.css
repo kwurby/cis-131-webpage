@@ -20,6 +20,10 @@ input.no-outline::placeholder,  textarea::placeholder{
     color: var(--outline);
 }
 
+body {
+    overflow: hidden;
+}
+
 
 main {
     height: 100%;
@@ -28,74 +32,84 @@ main {
 
 
 nav {
-    width: 25%;
-    max-width: 15rem;
+    width: 4%;
+    min-width: 4rem;
+    max-width: 6rem;
     display: flex;
     flex-direction: column;
     overflow: auto;
     height: 100%;
     float: left;
-    border-right: 1px solid var(--outline);
-    padding: 0.5rem;
     align-items: center;
-}
 
-nav h1 {
-    font-size: 100%;
-    text-align: center;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--outline);
-    width: 90%;
-}
-
-nav div {
-    transition: 0.2s;
-    width: calc(100% - 1rem);
-    font-weight: bolder;
-    border-radius: 3px;
+    padding: 0.5rem 0.5rem 1rem;
 }
 
 nav #add_work_space {
-    background-color: var(--accent);
-    color: white;
-    transition: 0.2s;
+    border: 3px solid black;
+    background-color: white;
     cursor: pointer;
+    width: calc(100% - 1rem);
+    margin-inline: auto;
+    margin-top: 1rem;
+    padding-inline: 0.25rem;
 }
 
 nav #add_work_space:hover {
-    filter: brightness(0.85);
+    transform: rotateZ(90deg);
+    fill: white;
+    transition: 0.15s;
+    background: black;
 }
 
-/* disapprear at 200px */
-nav #add_work_space span {
-    text-align: center;
-    padding-block: 0.5rem;
-    display: block;
+nav #add_work_space svg {
+    transform: translateY(0.1rem);
 }
 
-nav div:last-of-type {
+nav #date_check {
+    width: calc(100% - 1rem);
+    border: 3px solid black;
+    background-color: white;
+    cursor: pointer;
+    padding: 0.25rem;
+    padding-inline: 0.4rem;
     margin-top: auto;
+    transition: 0.15s;
 }
 
-nav #user {
-    border: 1px solid var(--outline);
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
+nav #date_check svg {
+    transform: translateY(0.1rem);
 }
 
-nav #user span {
-    display: inline;
+nav #date_check:hover {
+    fill: white;
+    background: black;
 }
 
-nav #user svg {
-    fill: var(--text);
-    height: 2rem;
+.hover_info:after {
+    width: fit-content;
+    opacity: 0;
+    content: attr(hoverme);
+    position: absolute;
+    display: block;
+    color: white;
+    background: black;
+    transition: all 0.15s ease;
+    padding: 0.25rem;
+    transform: translate(-9%, -105%);
+    pointer-events: none;
+    z-index: 5;
+
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
 }
+.hover_info:hover:after {
+    opacity: 100;
+    transform: translate(50%, -105%);
+}
+
+
 /*=======================================*/
 /*                modal                  */
 /*=======================================*/
@@ -113,8 +127,7 @@ nav #user svg {
     justify-content: flex-start;
     align-items: center;
     overflow: auto;
-    border-radius: 6px;
-    border: 2px solid var(--text);
+    border: 3px solid black;
     background: var(--main);
 
     padding: 12px;
@@ -124,10 +137,15 @@ nav #user svg {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 #modals div h2 {
     font-size: 1.2rem;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 #modals div button {
@@ -137,20 +155,22 @@ nav #user svg {
     padding-block: 0.5rem;
     margin-top: 0.5rem;
     width: 100%;
-    border: 2px solid var(--accent);
-    border-radius: 3px;
-    font-weight: bolder;
-    color: var(--accent);
+    border: 3px solid black;
+    color: black;
     transition: 0.2s;
+
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 #modals div button.delete {
-    background: var(--accent);
+    background: black;
     color: var(--main);
 }
 
 #modals div button:hover {
-    filter: brightness(0.9);
+    scale: 0.9;
 }
 
 /*=======================================*/
@@ -158,17 +178,19 @@ nav #user svg {
 /*=======================================*/
 
 #workspace {
-    width: 75%;
+    width: calc(95% - 5rem);
     height: 100%;
     overflow: auto;
+    margin-inline: auto;
 }
 
 .project {
     padding: 1rem;
     margin: 1rem;
-    border-radius: 6px;
     cursor: move;
     background: var(--main);
+
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 6px, rgba(0, 0, 0, 0.16) 0px 3px 6px;
 }
 
 .project.over {
@@ -187,11 +209,16 @@ nav #user svg {
     padding-left: 1rem;
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    width: 100%;
 }
 
 .project .project_title_text {
     font-size: 1.2rem;
+    width: calc(80% - 4.5rem);
+    margin-left: 0.5rem;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 /*=======================================*/
@@ -199,13 +226,8 @@ nav #user svg {
 /*=======================================*/
 
 .project .todo_section {
-    padding: 1rem;
-    margin: 1rem;
-
+    padding: 1rem 1rem 0;
     font-size: 1.2rem;
-
-    border-radius: 3px;
-    border: 1px solid var(--outline);
     z-index: 3;
 }
 
@@ -214,32 +236,44 @@ nav #user svg {
     margin-block: 1rem;
 }
 
+.project .todo_section .todo_template:not(:first-child){
+    border-top: 1px solid var(--outline);
+}
+
 .project .todo_section .task_note {
     resize:none;
-    border: 1px solid var(--outline);
-    border-radius: 3px;
+    padding: 0.5rem;
     outline: none;
+    border: 1px solid white;
+    border-left: 2px solid var(--outline);
     width: 90%;
     height: 4rem;
 }
 
 .project .todo_section input[type="date"] {
-    background-color: white;
     padding: 0.5rem;
     color: var(--text);
     font-size: 1rem;
-    border: 1px solid var(--outline);
     outline: none;
-    border-radius: 3px;
     width: auto;
     display: inline;
+    background: #eeeeee;
+
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
 }
+.project .todo_section .task_name {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
 
 .project .todo_section .delete_task {
     padding: 0.5rem;
     background-color: white;
     font-weight: bolder;
-    border-radius: 3px;
     font-size: 0.9rem;transition: 0.2s;
     cursor: pointer;
 }
@@ -251,7 +285,7 @@ nav #user svg {
 }
 
 .project .todo_section .delete_task:hover{
-    background-color: var(--outline);
+    background-color: #eeeeee;
 }
 
 
@@ -263,13 +297,17 @@ nav #user svg {
 
 
 .project .project_title .edit_option {
-    width: 6rem;
+    width: auto;
 }
 .project .project_title .edit_option svg {
     height: 1.5rem;
     cursor: pointer;
     transition: 0.2s;
 }
+.project .project_title .edit_option svg:not(:first-child){
+    margin-left: 0.5rem;
+}
+
 
 .project .project_title .delete_project {
     fill: var(--text);
@@ -281,7 +319,6 @@ nav #user svg {
 
 .project .project_title .add_task {
     fill: var(--text);
-    transition: 0.2s;
 }
 
 
